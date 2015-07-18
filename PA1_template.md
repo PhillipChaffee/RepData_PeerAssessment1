@@ -1,28 +1,25 @@
----
-title: 'Reproducible Research: Peer Assessment 1'
-output:
-  html_document:
-    keep_md: yes
-  pdf_document: default
----
+# Reproducible Research: Peer Assessment 1
 
 ## Loading and preprocessing the data
 
 Download the file from the internet.
 
-```{r download file}
+
+```r
 download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", "activity.zip")
 ```
 
 Unzip the file.
 
-```{r unzip}
+
+```r
 unzip("activity.zip")
 ```
 
 Load the file.
 
-```{r load}
+
+```r
 activity <- read.csv("activity.csv", na.strings="NA")
 ```
 
@@ -31,26 +28,40 @@ activity <- read.csv("activity.csv", na.strings="NA")
 
 Calculate the total number of steps per day.
 
-```{r # of steps/day}
+
+```r
 steps <- aggregate(steps ~ date, sum, data=activity, na.action=na.omit)
 ```
 
 Graph the number of steps per day.
 
-```{r graph of steps}
+
+```r
 hist(steps$steps, main="Average Steps Per Day", xlab="Steps Per Day")
 ```
 
+![](PA1_template_files/figure-html/graph of steps-1.png) 
+
 Mean of steps per day.
 
-```{r mean}
+
+```r
 mean(steps$steps)
+```
+
+```
+## [1] 10766.19
 ```
 
 Median of steps per day.
 
-```{r median}
+
+```r
 median(steps$steps)
+```
+
+```
+## [1] 10765
 ```
 ## What is the average daily activity pattern?
 
